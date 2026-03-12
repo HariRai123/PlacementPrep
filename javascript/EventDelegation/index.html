@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delagation</title>
+</head>
+<body>
+    <h2>Event Delegation</h2>
+    <ul id="list">
+        <li>apple</li>
+        <li>Banama</li>
+        <li>Mango</li>
+        <li>Orange</li>
+    </ul>
+    <script>
+        document.getElementById("list").addEventListener("click",function(event){
+            if(event.target.tagName==="LI")
+        {
+            alert("You clicked : "+event.target.textContent)
+        }
+        })
+    </script>
+</body>
+</html>

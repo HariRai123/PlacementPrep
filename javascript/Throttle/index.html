@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Throttle Example</title>
+<style>
+body{
+    font-family: Arial;
+    padding:40px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Throttle Example</h2>
+<p>Click the button quickly. The function will run only once every 2 seconds.</p>
+
+<button id="btn">Click Fast</button>
+
+<script>
+
+function throttle(func, delay){
+    let lastCall = 0;
+
+    return function(...args){
+        const now = Date.now();
+
+        if(now - lastCall >= delay){
+            lastCall = now;
+            func.apply(this, args);
+        }
+    }
+}
+
+function handleClick(){
+    console.log("Button clicked at:", new Date().toLocaleTimeString());
+}
+
+const throttledClick = throttle(handleClick, 2000);
+
+document.getElementById("btn").addEventListener("click", throttledClick);
+
+</script>
+
+</body>
+</html>
